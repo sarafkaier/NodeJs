@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/sarafkaier/NodeJs/issues"
   },
-  "homepage": "https://github.com/sarafkaier/NodeJs#readme"
+  "homepage": "https://github.com/sarafkaier/NodeJs#readme",
+  "dependencies": {
+    "mysql2": "^1.7.0",
+    "sequelize": "^5.18.1"
+  }
 }
