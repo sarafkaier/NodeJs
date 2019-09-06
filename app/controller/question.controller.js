@@ -19,7 +19,7 @@ exports.getAll = (req, res) => {
 
 // Get question by id
 exports.getById = (req, res) => {
-    QuestionDb.findById(req.params.questionId).then(result => {
+    QuestionDb.findByPk(req.params.questionId).then(result => {
         res.json(result);
     });
 };
