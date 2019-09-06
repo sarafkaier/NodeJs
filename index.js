@@ -23,6 +23,8 @@ db.sequelize.authenticate()
 });
 
 db.sequelize.sync({force: true}).then(() => {
+    const init = require('./app/config/initDb.js');
+    init.initialize();
     console.log("\x1b[44m%s\x1b[0m", 'Database Initialized');
 
     
