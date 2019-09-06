@@ -19,7 +19,7 @@ exports.getAll = (req, res) => {
 
 // Get note by id
 exports.getById = (req, res) => {
-    NoteDb.findById(req.params.noteId).then(result => {
+    NoteDb.findByPk(req.params.noteId).then(result => {
         res.json(result);
     });
 };

@@ -19,7 +19,7 @@ exports.getAll = (req, res) => {
 
 // Get categorie by id
 exports.getById = (req, res) => {
-    CategorieDb.findById(req.params.categorieId).then(result => {
+    CategorieDb.findByPk(req.params.categorieId).then(result => {
         res.json(result);
     });
 };

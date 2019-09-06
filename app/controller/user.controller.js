@@ -19,7 +19,7 @@ exports.getAll = (req, res) => {
 
 // Get user by id
 exports.getById = (req, res) => {
-    UserDb.findById(req.params.userId).then(result => {
+    UserDb.findByPk(req.params.userId).then(result => {
         res.json(result);
     });
 };
