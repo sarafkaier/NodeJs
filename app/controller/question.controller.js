@@ -5,9 +5,21 @@ const QuestionDb = db.question;
 // Create question
 exports.create = (req, res) => {
     let question = req.body;
-    QuestionDb.create(question).then(result => {
-        res.json(result);
-    });
+
+    if (
+            !question.hasOwnProperty('question')
+        ||  !question.hasOwnProperty('reponse1')
+        ||  !question.hasOwnProperty('reponse2')
+        ||  !question.hasOwnProperty('reponse3')
+        ||  !question.hasOwnProperty('reponse4')
+        ||  !question.hasOwnProperty('bonneReponse')
+    ) {
+        res.send("Request must contain question, reponse1, reponse2, reponse3, reponse4 and bonneReponse fields.");
+    } else {
+        QuestionDb.create(question).then(result => {
+            res.json(result);
+        });
+    }
 };
 
 // Get all questions
@@ -28,11 +40,13 @@ exports.getById = (req, res) => {
 // Update question 
 exports.update = (req, res) => {
     let question = req.body;
-    let id = req.body.id;
+    let id = question.id;
+
+    console.log(question);
     QuestionDb.update(question,
-        { where: {id: id} }
+        { where: { id: id } }
     ).then(() => {
-        res.status(200).json({msg:"updated successfully a question with id = " + id});
+        res.status(200).json({ msg: "updated successfully a question with id = " + id });
     });
 
 };
@@ -43,6 +57,6 @@ exports.delete = (req, res) => {
     QuestionDb.destroy({
         where: { id: id }
     }).then(() => {
-        res.status(200).json({msg:'deleted successfully a question with id = ' + id});
+        res.status(200).json({ msg: 'deleted successfully a question with id = ' + id });
     });
 };

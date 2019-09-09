@@ -5,9 +5,15 @@ const CategorieDb = db.categorie;
 // Create categorie
 exports.create = (req, res) => {
     let categorie = req.body;
-    CategorieDb.create(categorie).then(result => {
-        res.json(result);
-    });
+
+    if (!categorie.hasOwnProperty('name')) {
+        res.send("Request must contain name fields.");
+    } else {
+
+        CategorieDb.create(categorie).then(result => {
+            res.json(result);
+        });
+    }
 };
 
 // Get all categories
@@ -30,9 +36,9 @@ exports.update = (req, res) => {
     let categorie = req.body;
     let id = req.body.id;
     CategorieDb.update(categorie,
-        { where: {id: id} }
+        { where: { id: id } }
     ).then(() => {
-        res.status(200).json({msg:"updated successfully a categorie with id = " + id});
+        res.status(200).json({ msg: "updated successfully a categorie with id = " + id });
     });
 
 };
@@ -43,6 +49,6 @@ exports.delete = (req, res) => {
     CategorieDb.destroy({
         where: { id: id }
     }).then(() => {
-        res.status(200).json({msg:'deleted successfully a categorie with id = ' + id});
+        res.status(200).json({ msg: 'deleted successfully a categorie with id = ' + id });
     });
 };
