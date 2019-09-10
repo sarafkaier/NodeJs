@@ -6,19 +6,25 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey: true
         },
         question: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
         },
         reponse1: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
         },reponse2: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
         },reponse3: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
         },reponse4: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
         },
         bonneReponse: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            allowNull: false
         }
     },{
         timestamps: true
