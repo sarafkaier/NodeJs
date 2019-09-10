@@ -1,4 +1,5 @@
 const db = require('../config/db.config.js');
+const Sequelize = require('sequelize');
 
 const QuestionDb = db.question;
 
@@ -28,6 +29,22 @@ exports.getAll = (req, res) => {
         res.json(result);
     })
 };
+
+// Get questions by categorie
+
+exports.getByCategorie = (req, res) => {
+    QuestionDb.findAll({
+        where: {
+            categorieId: req.params.categorieId
+        },
+        order: [
+            Sequelize.fn( 'RAND' ),
+          ],
+        limit: 3
+    }).then(result => {
+        res.json(result);
+    })
+}
 
 // Get question by id
 exports.getById = (req, res) => {

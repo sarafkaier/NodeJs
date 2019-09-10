@@ -10,6 +10,9 @@ module.exports = (app) => {
     // Get question by Id 
     app.get('/api/question/:questionId', questions.getById);
 
+    // Get questions by categorieId
+    app.get('/api/question/categorie/:categorieId', questions.getByCategorie);
+
     //Update question
     app.put('/api/question', questions.update);
 
